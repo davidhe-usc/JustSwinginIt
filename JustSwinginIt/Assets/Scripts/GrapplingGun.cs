@@ -47,6 +47,8 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private float targetDistance = 3;
     [SerializeField] private float targetFrequency = 1;
 
+    [SerializeField] private float clickRadius = 10;
+
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
 
@@ -114,7 +116,28 @@ public class GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        Vector2 click = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D filter2D = new ContactFilter2D();
+        filter2D.layerMask = grappableLayerNumber;
+        Physics2D.OverlapCircle(click, clickRadius, filter2D, results);
+
+        Collider2D bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Debug.Log(results[0]);
+        foreach(Collider2D result in results)
+        {
+            Vector2 directionToTarget = (Vector2)result.gameObject.transform.position - click;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = result;
+            }
+        }
+
+        Vector2 closestPoint = bestTarget.ClosestPoint(click);
+        Vector2 distanceVector = closestPoint - (Vector2)gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
@@ -122,11 +145,14 @@ public class GrapplingGun : MonoBehaviour
             {
                 if (_hit.transform.gameObject.tag == ("Powerup"))
                 {
+                    launchSpeed = 10;
+                    launchType = LaunchType.Transform_Launch;
                     launchToPoint = true;
                 }
                 else
                 {
-                    launchToPoint = false;
+                    launchSpeed = 1;
+                    launchType = LaunchType.Physics_Launch;
                 }
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistance || !hasMaxDistance)
                 {
