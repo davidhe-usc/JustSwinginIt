@@ -120,6 +120,14 @@ public class GrapplingGun : MonoBehaviour
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
             {
+                if (_hit.transform.gameObject.tag == ("Powerup"))
+                {
+                    launchToPoint = true;
+                }
+                else
+                {
+                    launchToPoint = false;
+                }
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistance || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
