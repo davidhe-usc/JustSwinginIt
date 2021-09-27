@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         if(offset == def)
-            offset = new Vector3(0, 0, -20);
+            offset = new Vector3(0, 3, -20);
     }
 
     private void FixedUpdate()
