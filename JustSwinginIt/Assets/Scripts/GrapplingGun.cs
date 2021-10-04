@@ -32,6 +32,9 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistance = 20;
 
+    [Header("Speed:")]
+    [SerializeField] private float maxSpeed = 17.5f;
+
     private enum LaunchType
     {
         Transform_Launch,
@@ -87,7 +90,18 @@ public class GrapplingGun : MonoBehaviour
                     float currXDistance = grapplePoint.x - currPos.x;
                     float currYDistance = grapplePoint.y - currPos.y;
 
-                    m_rigidbody.AddForce(grappleDistanceVector * launchSpeed);
+                    float currSpeed = m_rigidbody.velocity.magnitude;
+
+                    if (currSpeed >= maxSpeed - (maxSpeed / 4))
+                    {
+                        float forceMultiplier = maxSpeed - (currSpeed / maxSpeed);
+                        m_rigidbody.AddForce(grappleDistanceVector * forceMultiplier);
+                    }
+
+                    else
+                    {
+                        m_rigidbody.AddForce(grappleDistanceVector * launchSpeed);
+                    }
 
                     //Debug.Log(currDistance);
 
