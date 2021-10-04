@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6944781868654653903}
   - component: {fileID: 6944781868654653901}
   - component: {fileID: 6944781868654653902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6944781868715329470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6944781868841748792}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 6944781869413608332}
   - component: {fileID: 6944781869413608333}
   - component: {fileID: 6944781869413608334}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 6944781870673438516}
   - component: {fileID: 6944781870673438517}
   - component: {fileID: 6944781870673438518}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrapplingGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,6 +594,7 @@ MonoBehaviour:
   grapplingRope: {fileID: 6944781868654653902}
   grappleToAll: 0
   grappableLayerNumber: 9
+  zippableLayerNumber: 8
   m_camera: {fileID: 0}
   gunHolder: {fileID: 6944781869413608370}
   gunPivot: {fileID: 6944781868841748792}
