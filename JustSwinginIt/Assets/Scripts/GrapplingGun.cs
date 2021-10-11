@@ -12,7 +12,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool grappleToAll = false;
     [SerializeField] private int grappableLayerNumber = 9;
     [SerializeField] private int zippableLayerNumber = 8;
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private int groundLayerNumber = 10;
 
     [Header("Main Camera")]
     public Camera m_camera;
@@ -78,7 +78,14 @@ public class GrapplingGun : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, .15f, groundLayer);
+        ContactFilter2D filter2D = new ContactFilter2D();
+
+        int ground = 1 << groundLayerNumber;
+        int zip = 1 << zippableLayerNumber;
+        int grapple = 1 << grappableLayerNumber;
+        filter2D.layerMask = grapple | zip | ground;
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, .15f, filter2D.layerMask);
         if (isGrounded)
         {
             if (!wasGrounded)
