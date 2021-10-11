@@ -67,6 +67,7 @@ public class GrapplingGun : MonoBehaviour
     private float launchSpeed = .5f;
     private bool isGrounded = false;
     private bool wasGrounded = false;
+    private bool passedZip = false;
     private float landingSpeed;
 
     private void Start()
@@ -113,6 +114,7 @@ public class GrapplingGun : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();
+            passedZip = false;
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -130,31 +132,37 @@ public class GrapplingGun : MonoBehaviour
             {
                 if (launchType == LaunchType.Zip_Launch)
                 {
-                    Vector2 currPos = transform.position;
-                    float currDistance = (grapplePoint - currPos).magnitude;
-                    float currXDistance = grapplePoint.x - currPos.x;
-                    float currYDistance = grapplePoint.y - currPos.y;
-
-                    float currSpeed = m_rigidbody.velocity.magnitude;
-
-                    if (currSpeed >= maxSpeed - (maxSpeed / 4))
+                    if (!passedZip)
                     {
-                        float forceMultiplier = maxSpeed - (currSpeed / maxSpeed);
-                        m_rigidbody.AddForce(grappleDistanceVector * forceMultiplier);
-                    }
+                        Vector2 currPos = transform.position;
+                        float currDistance = (grapplePoint - currPos).magnitude;
+                        float currXDistance = grapplePoint.x - currPos.x;
+                        float currYDistance = grapplePoint.y - currPos.y;
 
-                    else
-                    {
-                        m_rigidbody.AddForce(grappleDistanceVector * launchSpeed);
-                    }
+                        float currSpeed = m_rigidbody.velocity.magnitude;
 
-                    //Debug.Log(currDistance);
+                        if (currSpeed >= maxSpeed - (maxSpeed / 4))
+                        {
+                            float forceMultiplier = maxSpeed - (currSpeed / maxSpeed);
+                            m_rigidbody.AddForce(grappleDistanceVector * forceMultiplier);
+                        }
 
-                    if (currDistance <= 0.5f || (currXDistance <= 0.25f && m_rigidbody.velocity.x > launchSpeed) || (currYDistance <= 0.25f && m_rigidbody.velocity.y > launchSpeed))
-                    {
-                        grapplingRope.enabled = false;
-                        grapplingRope.isGrappling = false;
+                        else
+                        {
+                            m_rigidbody.AddForce(grappleDistanceVector * launchSpeed);
+                        }
+
+                        //Debug.Log(currDistance);
+
+                        if (currDistance <= 0.5f || (currXDistance <= 0.25f && m_rigidbody.velocity.x > launchSpeed) || (currYDistance <= 0.25f && m_rigidbody.velocity.y > launchSpeed))
+                        {
+                            grapplingRope.enabled = false;
+                            grapplingRope.isGrappling = false;
+                            m_rigidbody.gravityScale = 1;
+                            passedZip = true;
+                        }
                     }
+                    
                 }
 
                 else if (launchType == LaunchType.Transform_Launch)
