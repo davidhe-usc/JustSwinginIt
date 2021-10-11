@@ -214,6 +214,7 @@ public class GrapplingGun : MonoBehaviour
         Vector2 click = m_camera.ScreenToWorldPoint(Input.mousePosition);
         List<Collider2D> results = new List<Collider2D>();
         ContactFilter2D filter2D = new ContactFilter2D();
+        filter2D.useLayerMask = true;
         int grapple = 1 << grappableLayerNumber;
         int zip = 1 << zippableLayerNumber;
         filter2D.layerMask = grapple | zip;
@@ -233,7 +234,7 @@ public class GrapplingGun : MonoBehaviour
         }
 
         Vector2 closestPoint = bestTarget.ClosestPoint(click);
-        Vector2 distanceVector = closestPoint - (Vector2)gunPivot.position;
+        Vector2 distanceVector = closestPoint - (Vector2)firePoint.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
