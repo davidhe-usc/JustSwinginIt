@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 destinPosition = target.position + offset;
         float smoothX = transform.position.x + (destinPosition.x - transform.position.x) * smoothSpeedX;
         float smoothY = transform.position.y + (destinPosition.y - transform.position.y) * smoothSpeedY;
-        Vector3 smoothedPosition = new Vector3(smoothX, transform.position.y, transform.position.z);
+        Vector3 smoothedPosition = new Vector3(smoothX, smoothY, transform.position.z);
         transform.position = smoothedPosition;
     }
 }
