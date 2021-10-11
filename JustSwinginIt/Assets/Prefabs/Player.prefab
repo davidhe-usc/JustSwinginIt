@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &475034409067056693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455742243476489273}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455742243476489273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475034409067056693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6944781869413608370}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6944781868654653896
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6944781868841748792}
+  - {fileID: 455742243476489273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -448,7 +479,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.3000001
+  m_Distance: 14.840822
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!58 &6944781869413608334
@@ -595,22 +626,29 @@ MonoBehaviour:
   grappleToAll: 0
   grappableLayerNumber: 9
   zippableLayerNumber: 8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   m_camera: {fileID: 0}
   gunHolder: {fileID: 6944781869413608370}
   gunPivot: {fileID: 6944781868841748792}
   firePoint: {fileID: 6944781868715329470}
+  groundCheck: {fileID: 455742243476489273}
   m_springJoint2D: {fileID: 6944781869413608333}
   m_rigidbody: {fileID: 6944781869413608332}
   rotateOverTime: 1
   rotationSpeed: 4
   hasMaxDistance: 0
   maxDistance: 20
+  maxSpeed: 17.5
   launchToPoint: 1
   launchType: 1
-  launchSpeed: 1
+  physicsSpeed: 0.5
+  transformSpeed: 3
   autoConfigureDistance: 0
   targetDistance: 3
   targetFrequency: 1
   clickRadius: 50
+  startingSpeed: 10
   grapplePoint: {x: 0, y: 0}
   grappleDistanceVector: {x: 0, y: 0}

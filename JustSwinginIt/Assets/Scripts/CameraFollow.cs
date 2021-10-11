@@ -4,7 +4,8 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
 
-    public float smoothSpeed = .125f;
+    public float smoothSpeedX = .125f;
+    public float smoothSpeedY = .005f;
 
     [SerializeField]
     public Vector3 offset;
@@ -20,8 +21,9 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 destinPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, destinPosition, smoothSpeed);
+        float smoothX = transform.position.x + (destinPosition.x - transform.position.x) * smoothSpeedX;
+        float smoothY = transform.position.y + (destinPosition.y - transform.position.y) * smoothSpeedY;
+        Vector3 smoothedPosition = new Vector3(smoothX, transform.position.y, transform.position.z);
         transform.position = smoothedPosition;
-
     }
 }
