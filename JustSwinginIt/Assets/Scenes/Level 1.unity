@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: hasMaxDistance
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: rotateOverTime

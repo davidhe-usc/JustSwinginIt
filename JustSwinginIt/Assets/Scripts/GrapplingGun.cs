@@ -88,6 +88,10 @@ public class GrapplingGun : MonoBehaviour
         else
             wasGrounded = false;
 
+    }
+
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();
