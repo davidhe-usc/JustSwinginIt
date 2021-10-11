@@ -479,7 +479,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 14.840822
+  m_Distance: 1.3000001
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!58 &6944781869413608334
@@ -629,7 +629,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  m_camera: {fileID: 0}
+  m_camera: {fileID: 6062018130698169939, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
   gunHolder: {fileID: 6944781869413608370}
   gunPivot: {fileID: 6944781868841748792}
   firePoint: {fileID: 6944781868715329470}
@@ -640,7 +640,7 @@ MonoBehaviour:
   rotationSpeed: 4
   hasMaxDistance: 0
   maxDistance: 20
-  maxSpeed: 17.5
+  maxSpeed: 50
   launchToPoint: 1
   launchType: 1
   physicsSpeed: 0.5

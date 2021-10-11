@@ -317,7 +317,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6944781869413608333, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: m_Distance
-      value: 1.3000001
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944781869413608333, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: m_AutoConfigureDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6944781869413608335, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: m_Name

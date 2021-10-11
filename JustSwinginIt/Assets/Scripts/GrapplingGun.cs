@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GrapplingGun : MonoBehaviour
 {
@@ -33,9 +34,11 @@ public class GrapplingGun : MonoBehaviour
     [Header("Distance:")]
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistance = 20;
+    [SerializeField] private float minDistance = 3;
 
     [Header("Speed:")]
     [SerializeField] private float maxSpeed = 50f;
+    [SerializeField] private float minSpeed = 5f;
 
     private enum LaunchType
     {
@@ -81,6 +84,10 @@ public class GrapplingGun : MonoBehaviour
             if (!wasGrounded)
             {
                 landingSpeed = m_rigidbody.velocity.x;
+            }
+            if (landingSpeed < minSpeed)
+            {
+                landingSpeed += 0.1f;
             }
             m_rigidbody.velocity = new Vector2(landingSpeed, 0f);
             wasGrounded = true;
@@ -271,7 +278,7 @@ public class GrapplingGun : MonoBehaviour
 
                     Vector2 distanceVector = firePoint.position - gunHolder.position;
 
-                    m_springJoint2D.distance = distanceVector.magnitude;
+                    m_springJoint2D.distance = Math.Max(distanceVector.magnitude, minDistance);
                     m_springJoint2D.frequency = launchSpeed;
                     m_springJoint2D.enabled = true;
                     break;
