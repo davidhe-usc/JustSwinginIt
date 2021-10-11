@@ -35,7 +35,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private float maxDistance = 20;
 
     [Header("Speed:")]
-    [SerializeField] private float maxSpeed = 17.5f;
+    [SerializeField] private float maxSpeed = 50f;
 
     private enum LaunchType
     {
@@ -88,6 +88,10 @@ public class GrapplingGun : MonoBehaviour
         else
             wasGrounded = false;
 
+        if (m_rigidbody.velocity.magnitude > maxSpeed)
+        {
+            m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed;
+        }
     }
 
     private void Update()

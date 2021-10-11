@@ -676,6 +676,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079512189}
     - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: maxSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: clickRadius
       value: 100
       objectReference: {fileID: 0}
