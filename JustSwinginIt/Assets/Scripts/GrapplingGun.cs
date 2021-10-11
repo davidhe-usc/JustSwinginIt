@@ -158,7 +158,7 @@ public class GrapplingGun : MonoBehaviour
                         {
                             grapplingRope.enabled = false;
                             grapplingRope.isGrappling = false;
-                            m_rigidbody.gravityScale = 1;
+                            m_rigidbody.gravityScale = .5f;
                             passedZip = true;
                         }
                     }
@@ -184,6 +184,13 @@ public class GrapplingGun : MonoBehaviour
         {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
+        }
+
+        if (m_rigidbody.gravityScale < 1)
+        {
+            m_rigidbody.gravityScale += Time.deltaTime/2;
+            if (m_rigidbody.gravityScale > 1)
+                m_rigidbody.gravityScale = 1;
         }
     }
 
