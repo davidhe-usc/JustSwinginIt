@@ -233,12 +233,14 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
-        Vector2 closestPoint = bestTarget.ClosestPoint(click);
+        Vector2 closestPoint = bestTarget.ClosestPoint(firePoint.position);
         Vector2 distanceVector = closestPoint - (Vector2)firePoint.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
-            if (_hit.transform.gameObject.layer == grappableLayerNumber || _hit.transform.gameObject.layer == zippableLayerNumber || grappleToAll)
+            int layerMask = (1 << grappableLayerNumber) | (1 << zippableLayerNumber);
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, layerMask);
+
+            if (_hit || grappleToAll)
             {
                 if (_hit.transform.gameObject.tag == ("Powerup"))
                 {
