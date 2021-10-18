@@ -274,10 +274,14 @@ public class GrapplingGun : MonoBehaviour
                             launchType = LaunchType.Physics_Launch;
                         }
 
-                        grapplePoint = _hit.point;
-                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                        grapplingRope.enabled = true;
-                    }
+					//Case 2: Call HasPivoted.PivotRange() if general area has been grappled.
+					GameObject go = _hit.transform.gameObject;
+			        var objScript = (HasPivoted)go.GetComponent(typeof(HasPivoted));
+			        objScript.PivotRange();
+					
+					grapplePoint = _hit.point;
+                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                    grapplingRope.enabled = true;
                 }
             }        
         }

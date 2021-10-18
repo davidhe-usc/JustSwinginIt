@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
-
 public class LevelCompleteActions : MonoBehaviour
 {
-
+	//0a. The PivotCounter, currently an Empty GameObject.
+	public bool levelOver = false;
+	[SerializeField] public PivotCounter PivotCounter;
+	
     public LevelCompleteScreen LevelCompleteScreen;
+
     public float missedGrapples;
 
     public void Start()
@@ -18,9 +21,11 @@ public class LevelCompleteActions : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.GetComponent<Collider2D>() != null)
+        if (collision.GetComponent<Collider2D>() != null && levelOver==false)
         {
             AnalyticsResult levelComplete = Analytics.CustomEvent("Level Won");
+            levelOver = true;
+            PivotCounter.PivotCounterBegin()
             UnityEngine.Debug.Log("Win log: " + levelComplete);
             LevelCompleteScreen.Setup();
 
@@ -42,5 +47,5 @@ public class LevelCompleteActions : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
-    
+
 }
