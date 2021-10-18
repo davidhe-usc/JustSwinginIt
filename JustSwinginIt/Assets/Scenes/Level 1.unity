@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 796020740}
+  manager: {fileID: 547933450}
 --- !u!1 &946043409
 GameObject:
   m_ObjectHideFlags: 0
