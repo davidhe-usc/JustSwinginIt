@@ -7,22 +7,22 @@ public class HasPivoted : MonoBehaviour
 	public bool hasPivoted = false;
 	public GameObject currentPivot;
 	
+	// Case 1: Grappling/clicking on the pivot itself, not the general area.
 	void OnMouseDown() 
 	{
-		//XXX have to click the object itself, not the area
 		hasPivoted = true;
-		Debug.Log("HasPivoted"+hasPivoted);
 	}
-	public bool HasThisPivoted(){
+	
+	// Case 2: If grappling the general area and/or the pivot itself.
+	// Called by GrapplingGun.cs
+	public void PivotRange()
+	{
+		hasPivoted = true;
+	}
+	
+	//Check boolean hasPivoted.
+	public bool HasThisPivoted()
+	{
 		return hasPivoted;
 	}
-    /*// Start is called before the first frame update
-    void Start()
-    { 
-		
-    }
-    // Update is called once per frame
-    void Update()
-    {   
-    }*/
 }

@@ -781,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEndpoint: {fileID: 547933450}
+  gameOver: {fileID: 856121542}
   levelNumber: 0
 --- !u!4 &709756634
 Transform:
