@@ -23,7 +23,7 @@ public class HasPivoted : MonoBehaviour
 		hasPivoted = true;
 		Debug.Log("HasPivoted"+hasPivoted);
 	}
-	bool HasThisPivoted(){
+	public bool HasThisPivoted(){
 		return hasPivoted;
 	}
 }

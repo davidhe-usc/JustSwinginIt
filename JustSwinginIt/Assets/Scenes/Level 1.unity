@@ -1095,6 +1095,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8293647452672195326, guid: 49de7cd1031b24a638a0ea1b07b16d63, type: 3}
   m_PrefabInstance: {fileID: 2035345657}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1235502884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6944781869413608335, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+  m_PrefabInstance: {fileID: 1835883832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235502889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235502884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a12d3fbc2f393f4f91bc52cb0fc3c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathBed: {fileID: 856121542}
+  levelEndpoint: {fileID: 547933450}
+  levelNumber: 0
 --- !u!1001 &1418155522
 PrefabInstance:
   m_ObjectHideFlags: 0

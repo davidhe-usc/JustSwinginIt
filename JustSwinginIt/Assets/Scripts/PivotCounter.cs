@@ -24,7 +24,8 @@ public class PivotCounter : MonoBehaviour
             {
                 {"% Pivots Used", percentPivotsUsed }
             };
-			
+		Debug.Log("levelNumber: "+ levelNumber);
+		Debug.Log("pivots used" + percentPivotsUsed);
 		AnalyticsResult analytics_result = Analytics.CustomEvent(("Level "+levelNumber), analyticsData);
 		Debug.Log("Analytics Result: "+analytics_result);		
 	}
@@ -33,6 +34,7 @@ public class PivotCounter : MonoBehaviour
     void Start()
     {
         gameObjectsAnchors = GameObject.FindGameObjectsWithTag("Anchors");
+		Debug.Log("gameObjectsAnchors "+gameObjectsAnchors);
 		numPivotObjects =gameObjectsAnchors.Length;
 		Debug.Log("numPivotObjects: "+numPivotObjects);
     }
@@ -45,7 +47,10 @@ public class PivotCounter : MonoBehaviour
 			//then calculate analytics.
 			var pivotsUsed = 0;
 			for (int i=0;i<numPivotObjects;i++){
-				if (gameObjectsAnchors[i].GetComponent<HasPivoted>().hasPivoted == true){
+				GameObject go = gameObjectsAnchors[i];//GameObject.Find("Pivot");
+				var objScript = (HasPivoted)go.GetComponent(typeof(HasPivoted));
+				if (objScript.HasThisPivoted() == true)
+				{
 					pivotsUsed++;
 					Debug.Log("pivotsUsed: "+pivotsUsed);
 				}
