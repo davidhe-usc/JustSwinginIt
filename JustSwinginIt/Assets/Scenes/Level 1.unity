@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelCompleteScreen: {fileID: 2054243292}
+  missedGrapples: 0
 --- !u!61 &547933451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 547933450}
     - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: m_camera
       value: 

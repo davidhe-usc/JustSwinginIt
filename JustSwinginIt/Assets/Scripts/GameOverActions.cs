@@ -6,17 +6,23 @@ using UnityEngine.Analytics;
 public class GameOverActions : MonoBehaviour
 {   
     public GameOverScreen GameOverScreen;
+    [SerializeField]
+    private LevelCompleteActions manager;
+
+
     private void OnTriggerEnter2D(Collider2D collision){
-    if (collision.GetComponent<Collider2D>()!=null){
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "Player died",
-            new Dictionary<string,object>{
+        if (collision.GetComponent<Collider2D>()!=null){
+            AnalyticsResult deathResult = Analytics.CustomEvent("Player died", new Dictionary<string,object>{
                 {"Level", 1},
                 {"Position", transform.position.x}
-            }
-        );
-        UnityEngine.Debug.Log("Death log:"+analyticsResult);
+            });
+
+            AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
+            {
+                {"Missed Grapples", manager.missedGrapples}
+            });
+            UnityEngine.Debug.Log("Death log: "+ deathResult);
         GameOverScreen.Setup();
+        }
     }
-}
 }
