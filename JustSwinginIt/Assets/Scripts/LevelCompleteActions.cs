@@ -11,13 +11,12 @@ public class LevelCompleteActions : MonoBehaviour
 	
     public LevelCompleteScreen LevelCompleteScreen;
     private void OnTriggerEnter2D(Collider2D collision){
-    if (collision.GetComponent<Collider2D>()!=null){
+    if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
         AnalyticsResult analyticsResult = Analytics.CustomEvent("Level Won");
         
-		levelOver = true;
 		//0b. Call PivotCounter to record data.
+		levelOver = true;
 		PivotCounter.PivotCounterBegin();
-		Debug.Log("PivotCounterComplete");
 		
 		UnityEngine.Debug.Log("Win log:"+analyticsResult);
         LevelCompleteScreen.Setup();	

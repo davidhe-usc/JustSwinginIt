@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using System;
 
 public class PivotCounter : MonoBehaviour
 { 
 	public LevelCompleteActions levelEndpoint;
-	private int numPivotObjects = 0; //y
+	private double numPivotObjects = 0.0; //y
 	public int levelNumber = 0; //x
 	
 	public void PivotCounterBegin(){
@@ -20,10 +21,10 @@ public class PivotCounter : MonoBehaviour
 			}
 		}
 		var gameObjectsAnchors = goa.ToArray();
-		numPivotObjects =gameObjectsAnchors.Length;
+		numPivotObjects = gameObjectsAnchors.Length;
 		
 		//2. Check for all pivots whether used or not.
-		var pivotsUsed = 0;
+		double pivotsUsed = 0.0;
 		//2a. For i pivot.
 		for (int i=0;i<numPivotObjects;i++){
 			GameObject go = gameObjectsAnchors[i];//GameObject.Find("Target");
@@ -34,17 +35,14 @@ public class PivotCounter : MonoBehaviour
 				pivotsUsed++;
 			}
 		}
-		Debug.Log("pivotsUsed: "+pivotsUsed);
 		//2c. Calculate percentage of pivots used. Round to 3 digits.
-		float percentPivotsUsed = Mathf.Round((float)pivotsUsed/(float)numPivotObjects);
-		Debug.Log("percent "+percentPivotsUsed);
+		double percentPivotsUsed = ((pivotsUsed/numPivotObjects)*100.0)/100.0;
 		TriggerTestAnalyticsEvent(percentPivotsUsed);
 	}
 	//3. Transfer fraction/percentage of zip points/grapple points used on each level.
-	public void TriggerTestAnalyticsEvent(float percentPivotsUsed){
+	public void TriggerTestAnalyticsEvent(double percentPivotsUsed){
 		//3a. Calculate X = Level Number
 		if(levelEndpoint.levelOver == true){
-			Debug.Log("levelNumberincrease-because completed");
 			levelNumber++;
 			//XXX Should keep levelNumber in GameManager not here!
 		}		
@@ -53,8 +51,8 @@ public class PivotCounter : MonoBehaviour
             {
                 {"% Pivots Used", percentPivotsUsed }
             };
-		Debug.Log("levelNumber: "+ levelNumber);
-		Debug.Log("pivots used" + percentPivotsUsed);
+		Debug.Log("X LevelNumber: "+ levelNumber);
+		Debug.Log("Y %Pivots used: " + percentPivotsUsed);
 		//3c. Generate Analytics. Responds "Ok".
 		AnalyticsResult analytics_result = Analytics.CustomEvent(("Level "+levelNumber), analyticsData);
 		Debug.Log("Analytics Result: "+analytics_result);		
