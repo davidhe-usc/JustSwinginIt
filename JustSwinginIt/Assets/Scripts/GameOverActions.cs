@@ -2,30 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class GameOverActions : MonoBehaviour
 {   
-	//0a. The PivotCounter, currently an Empty GameObject.
-	public bool levelOver = false;
-	[SerializeField] public PivotCounter PivotCounter;
-	
+    //0a. The PivotCounter, currently an Empty GameObject.
+	  public bool levelOver = false;
+	  [SerializeField] public PivotCounter PivotCounter;
     public GameOverScreen GameOverScreen;
+    [SerializeField] private LevelCompleteActions manager;
+
+
     private void OnTriggerEnter2D(Collider2D collision){
-    if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "Player died",
-            new Dictionary<string,object>{
-                {"Level", 1},
-                {"Position", transform.position.x}
-            }
-        );
+
+      if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
+          AnalyticsResult analyticsResult = Analytics.CustomEvent(
+              "Player died",
+              new Dictionary<string,object>{
+                  {"Level", 1},
+                  {"Position", transform.position.x}
+              }
+          );
 
 		//0b. Call PivotCounter to record data.
-		levelOver = true;
-		PivotCounter.PivotCounterBegin();
+		      levelOver = true;
+		      PivotCounter.PivotCounterBegin();
 		
-        UnityEngine.Debug.Log("Death log:"+analyticsResult);
-        GameOverScreen.Setup();	
-	}
-	}
+       
+
+        
+            
+
+            AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
+            {
+                {"Missed Grapples", manager.missedGrapples}
+            });
+            UnityEngine.Debug.Log("Death log: "+ deathResult);
+            GameOverScreen.Setup();
+            StartCoroutine(WaitThenReload());
+        }
+    }
+
+    IEnumerator WaitThenReload()
+    {
+        yield return new WaitForSeconds(5);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
 }

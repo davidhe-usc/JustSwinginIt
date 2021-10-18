@@ -608,6 +608,7 @@ MonoBehaviour:
   levelOver: 0
   PivotCounter: {fileID: 709756633}
   LevelCompleteScreen: {fileID: 2054243292}
+  missedGrapples: 0
 --- !u!61 &547933451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -686,6 +687,70 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &646033836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 112390966084459450, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+  m_PrefabInstance: {fileID: 675102345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &646033837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646033836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 2
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: CustomEvent
+    m_Parameters:
+      m_Parameters:
+      - m_RequirementType: 0
+        m_GroupID: 
+        m_Tooltip: 
+        m_Name: GroundTest
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 1
+          m_ValueType: System.String
+          m_Value: Ok
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.Int32
+            - System.Boolean
+            - System.Decimal
+            - System.Double
+            - System.Single
+            - System.Int64
+            - System.Int16
+            - System.String
+            m_Type: System.String
+            m_EnumType: 
+    m_Name: GroundBarTouchSample
 --- !u!1001 &675102345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1052,6 +1117,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8293647452672195326, guid: 49de7cd1031b24a638a0ea1b07b16d63, type: 3}
   m_PrefabInstance: {fileID: 1521495753}
   m_PrefabAsset: {fileID: 0}
+  manager: {fileID: 547933450}
 --- !u!1 &946043409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1606,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 547933450}
     - target: {fileID: 6944781870673438518, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: m_camera
       value: 

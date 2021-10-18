@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class LevelCompleteActions : MonoBehaviour
 {
@@ -10,18 +11,41 @@ public class LevelCompleteActions : MonoBehaviour
 	[SerializeField] public PivotCounter PivotCounter;
 	
     public LevelCompleteScreen LevelCompleteScreen;
+
+    public float missedGrapples;
+
+    public void Start()
+    {
+        AnalyticsResult levelAttempt = Analytics.CustomEvent("Level Started");
+        missedGrapples = 0;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision){
-    if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
-        AnalyticsResult analyticsResult = Analytics.CustomEvent("Level Won");
-        
-		//0b. Call PivotCounter to record data.
-		levelOver = true;
-		PivotCounter.PivotCounterBegin();
-		
-		UnityEngine.Debug.Log("Win log:"+analyticsResult);
-        LevelCompleteScreen.Setup();	
+        if (collision.GetComponent<Collider2D>() != null && levelOver==false)
+        {
+            AnalyticsResult levelComplete = Analytics.CustomEvent("Level Won");
+            levelOver = true;
+            PivotCounter.PivotCounterBegin()
+            UnityEngine.Debug.Log("Win log: " + levelComplete);
+            LevelCompleteScreen.Setup();
+
+            AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
+            {
+                {"Missed Grapples", missedGrapples}
+            });
+
+            StartCoroutine(WaitThenReload());
+
+            
+            
+        }
     }
-    // Start is called before the first frame update
+
+    IEnumerator WaitThenReload()
+    {
+        yield return new WaitForSeconds(5);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
-    // Update is called once per frame
+
 }

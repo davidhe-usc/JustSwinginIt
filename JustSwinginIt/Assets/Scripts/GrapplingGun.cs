@@ -70,6 +70,11 @@ public class GrapplingGun : MonoBehaviour
     private bool passedZip = false;
     private float landingSpeed;
 
+
+    [Header("Analytics")]
+    [SerializeField]
+    private LevelCompleteActions manager;
+
     private void Start()
     {
         grapplingRope.enabled = false;
@@ -233,39 +238,41 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
-        Vector2 closestPoint = bestTarget.ClosestPoint(firePoint.position);
-        Vector2 distanceVector = closestPoint - (Vector2)firePoint.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        if (bestTarget != null)
         {
-            int layerMask = (1 << grappableLayerNumber) | (1 << zippableLayerNumber);
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, layerMask);
-
-            if (_hit || grappleToAll)
+            Vector2 closestPoint = bestTarget.ClosestPoint(firePoint.position);
+            Vector2 distanceVector = closestPoint - (Vector2)firePoint.position;
+            if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
             {
-                if (_hit.transform.gameObject.tag == ("Powerup"))
+                int layerMask = (1 << grappableLayerNumber) | (1 << zippableLayerNumber);
+                RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, layerMask);
+
+                if (_hit || grappleToAll)
                 {
-                    launchSpeed = transformSpeed;
-                    launchType = LaunchType.Transform_Launch;
-                    launchToPoint = true;
-                }
-                else
-                {
-                    launchSpeed = physicsSpeed;
-                    launchType = LaunchType.Physics_Launch;
-                }
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistance || !hasMaxDistance)
-                {
-                    if (_hit.transform.gameObject.layer == zippableLayerNumber)
+                    if (_hit.transform.gameObject.tag == ("Powerup"))
                     {
-                        launchSpeed = 10;
-                        launchType = LaunchType.Zip_Launch;
+                        launchSpeed = transformSpeed;
+                        launchType = LaunchType.Transform_Launch;
                         launchToPoint = true;
                     }
                     else
                     {
-                        launchSpeed = 1;
+                        launchSpeed = physicsSpeed;
                         launchType = LaunchType.Physics_Launch;
                     }
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistance || !hasMaxDistance)
+                    {
+                        if (_hit.transform.gameObject.layer == zippableLayerNumber)
+                        {
+                            launchSpeed = 10;
+                            launchType = LaunchType.Zip_Launch;
+                            launchToPoint = true;
+                        }
+                        else
+                        {
+                            launchSpeed = 1;
+                            launchType = LaunchType.Physics_Launch;
+                        }
 
 					//Case 2: Call HasPivoted.PivotRange() if general area has been grappled.
 					GameObject go = _hit.transform.gameObject;
@@ -276,7 +283,12 @@ public class GrapplingGun : MonoBehaviour
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grapplingRope.enabled = true;
                 }
-            }
+            }        
+        }
+
+        else
+        {
+            manager.missedGrapples += 1;
         }
     }
 
