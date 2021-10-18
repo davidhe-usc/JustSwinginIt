@@ -8,7 +8,7 @@ public class GameOverActions : MonoBehaviour
     public GameOverScreen GameOverScreen;
     private void OnTriggerEnter2D(Collider2D collision){
     if (collision.GetComponent<Collider2D>()!=null){
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+        AnalyticsResult analyticsResult = AnalyticsEvent.Custom(
             "Player died",
             new Dictionary<string,object>{
                 {"Level", 1},
