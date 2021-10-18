@@ -5,7 +5,7 @@ using UnityEngine.Analytics;
 
 public class GameOverActions : MonoBehaviour
 {   
-	public bool levelOver = false;
+	//0a. The PivotCounter, currently an Empty GameObject.
 	[SerializeField] public PivotCounter PivotCounter;
 	
     public GameOverScreen GameOverScreen;
@@ -18,14 +18,12 @@ public class GameOverActions : MonoBehaviour
                 {"Position", transform.position.x}
             }
         );
-		
-		levelOver = true;
+
+		//0b. Call PivotCounter to record data.
 		PivotCounter.PivotCounterBegin();
 		
         UnityEngine.Debug.Log("Death log:"+analyticsResult);
-        GameOverScreen.Setup();
-		
+        GameOverScreen.Setup();	
 	}
 	}
-
 }
