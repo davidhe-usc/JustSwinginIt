@@ -5,9 +5,9 @@ using UnityEngine.Analytics;
 
 public class PivotCounter : MonoBehaviour
 {
-	public GameOverActions deathBed; 
+	//public GameOverActions deathBed; 
 	public LevelCompleteActions levelEndpoint;
-	private GameObject[] gameObjectsAnchors;
+	//private GameObject[] gameObjectsAnchors;
 	private int numPivotObjects = 0;
 	public int levelNumber = 0;
 	
@@ -30,23 +30,26 @@ public class PivotCounter : MonoBehaviour
 		Debug.Log("Analytics Result: "+analytics_result);		
 	}
 	
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameObjectsAnchors = GameObject.FindGameObjectsWithTag("Anchors");
-		Debug.Log("gameObjectsAnchors "+gameObjectsAnchors);
+	public void PivotCounterBegin(){
+		int layerNum = 9; // XXX 9 for Grappable!
+		List<GameObject> goa = new List<GameObject>();
+		var allObjects = FindObjectsOfType<GameObject>();
+		for (int i=0;i<allObjects.Length;i++){
+			if(allObjects[i].layer == layerNum){
+				goa.Add(allObjects[i]);
+			}
+		}
+		var gameObjectsAnchors = goa.ToArray();
+		
 		numPivotObjects =gameObjectsAnchors.Length;
-		Debug.Log("numPivotObjects: "+numPivotObjects);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+		
 		//if game is over, win or lose...
-        if(deathBed.levelOver==true || levelEndpoint.levelOver==true){
+        //if(deathBed.levelOver==true || levelEndpoint.levelOver==true){
+		if(true){
 			//then calculate analytics.
 			var pivotsUsed = 0;
 			for (int i=0;i<numPivotObjects;i++){
+				Debug.Log("goatest"+gameObjectsAnchors[i]);
 				GameObject go = gameObjectsAnchors[i];//GameObject.Find("Pivot");
 				var objScript = (HasPivoted)go.GetComponent(typeof(HasPivoted));
 				if (objScript.HasThisPivoted() == true)
@@ -58,6 +61,15 @@ public class PivotCounter : MonoBehaviour
 			float percentPivotsUsed = pivotsUsed/numPivotObjects;
 			TriggerTestAnalyticsEvent(percentPivotsUsed);
 		}
+	}
+	/*
+    // Start is called before the first frame update
+    void Start()
+    {
     }
-	
+    // Update is called once per frame
+    void Update()
+    {
+    }
+	*/
 }
