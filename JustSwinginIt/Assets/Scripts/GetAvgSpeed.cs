@@ -52,6 +52,7 @@ public class GetAvgSpeed : MonoBehaviour
     private void updateAvgSpeed()
     {
         averageSpeed = (averageSpeed * lastTimeSpan + m_rigidbody.velocity.magnitude * Time.deltaTime) / (lastTimeSpan + Time.deltaTime);
+        lastTimeSpan += Time.deltaTime;
     }
 
     //void OnDestroy()
