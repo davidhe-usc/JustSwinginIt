@@ -25,7 +25,7 @@ public class LevelCompleteActions : MonoBehaviour
         {
             AnalyticsResult levelComplete = Analytics.CustomEvent("Level Won");
             levelOver = true;
-            PivotCounter.PivotCounterBegin()
+            PivotCounter.PivotCounterBegin();
             UnityEngine.Debug.Log("Win log: " + levelComplete);
             LevelCompleteScreen.Setup();
 

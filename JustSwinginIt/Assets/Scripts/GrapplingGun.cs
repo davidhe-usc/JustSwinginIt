@@ -167,7 +167,7 @@ public class GrapplingGun : MonoBehaviour
                             passedZip = true;
                         }
                     }
-                    
+
                 }
 
                 else if (launchType == LaunchType.Transform_Launch)
@@ -193,7 +193,7 @@ public class GrapplingGun : MonoBehaviour
 
         if (m_rigidbody.gravityScale < 1)
         {
-            m_rigidbody.gravityScale += Time.deltaTime/2;
+            m_rigidbody.gravityScale += Time.deltaTime / 2;
             if (m_rigidbody.gravityScale > 1)
                 m_rigidbody.gravityScale = 1;
         }
@@ -227,7 +227,7 @@ public class GrapplingGun : MonoBehaviour
 
         Collider2D bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
-        foreach(Collider2D result in results)
+        foreach (Collider2D result in results)
         {
             Vector2 directionToTarget = (Vector2)result.gameObject.transform.position - click;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
@@ -274,21 +274,22 @@ public class GrapplingGun : MonoBehaviour
                             launchType = LaunchType.Physics_Launch;
                         }
 
-					//Case 2: Call HasPivoted.PivotRange() if general area has been grappled.
-					GameObject go = _hit.transform.gameObject;
-			        var objScript = (HasPivoted)go.GetComponent(typeof(HasPivoted));
-			        objScript.PivotRange();
-					
-					grapplePoint = _hit.point;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                    grapplingRope.enabled = true;
-                }
-            }        
-        }
+                        //Case 2: Call HasPivoted.PivotRange() if general area has been grappled.
+                        GameObject go = _hit.transform.gameObject;
+                        var objScript = (HasPivoted)go.GetComponent(typeof(HasPivoted));
+                        objScript.PivotRange();
 
-        else
-        {
-            manager.missedGrapples += 1;
+                        grapplePoint = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grapplingRope.enabled = true;
+                    }
+                }
+            }
+
+            else
+            {
+                manager.missedGrapples += 1;
+            }
         }
     }
 

@@ -16,7 +16,7 @@ public class GameOverActions : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
 
       if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
-          AnalyticsResult analyticsResult = Analytics.CustomEvent(
+          AnalyticsResult deathResult = Analytics.CustomEvent(
               "Player died",
               new Dictionary<string,object>{
                   {"Level", 1},
