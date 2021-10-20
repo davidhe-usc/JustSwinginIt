@@ -42,7 +42,8 @@ public class PivotCounter : MonoBehaviour
 		}
 		
 		//2c. Calculate percentage of pivots used. Round to 3 digits.
-		double percentPivotsUsed = ((pivotsUsed/numPivotObjects)*100.0)/100.0;
+		double percentPivotsUsed = ((pivotsUsed/numPivotObjects)*100.0);
+		percentPivotsUsed = Math.Round(percentPivotsUsed, 3);
 		TriggerTestAnalyticsEvent(percentPivotsUsed, pivotsUsed);
 	}
 	//3. Analytics: Transfer fraction/percentage of zip points/grapple points used on each level.
@@ -59,11 +60,11 @@ public class PivotCounter : MonoBehaviour
             {
                 {"% Pivots Used", percentPivotsUsed }
             };
-		Debug.Log("X LevelNumber: "+ levelNumber);
-		Debug.Log("Y #Pivots used: "+pivotsUsed+"/"+numPivotObjects+" "+percentPivotsUsed+"%Pivots used");
+		// Debug.Log("Level Number analytics: "+ levelNumber);
+		Debug.Log("#Pivots used analytics: "+pivotsUsed+"/"+numPivotObjects+" "+percentPivotsUsed+"%Pivots used");
 		
 		//3c. Generate Analytics. Responds "Ok".
 		AnalyticsResult analytics_result = Analytics.CustomEvent(("Level "+levelNumber), analyticsData);
-		Debug.Log("Pivot Count Log: "+analytics_result);		
+		// Debug.Log("Pivot Count Log: "+analytics_result);		
 	}
 }

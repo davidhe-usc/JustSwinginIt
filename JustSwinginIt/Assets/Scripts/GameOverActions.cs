@@ -26,28 +26,24 @@ public class GameOverActions : MonoBehaviour
 
 		//0b. Call PivotCounter to record data.
 		      levelOver = true;
-		      PivotCounter.PivotCounterBegin();
-		
-       
-
-        
-            
+		      PivotCounter.PivotCounterBegin();         
 
             AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
             {
                 {"Missed Grapples", manager.missedGrapples}
             });
-            UnityEngine.Debug.Log("Death log: "+ deathResult);
+            UnityEngine.Debug.Log("Player dead analytics: "+ transform.position.x);
+            UnityEngine.Debug.Log("Missed Grapple analytics: "+ manager.missedGrapples);
             GameOverScreen.Setup();
-            StartCoroutine(WaitThenReload());
+            // StartCoroutine(WaitThenReload());
         }
     }
 
-    IEnumerator WaitThenReload()
-    {
-        yield return new WaitForSeconds(5);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
+    // IEnumerator WaitThenReload()
+    // {
+    //     yield return new WaitForSeconds(5);
+    //     Scene scene = SceneManager.GetActiveScene();
+    //     SceneManager.LoadScene(scene.name);
+    // }
 
 }

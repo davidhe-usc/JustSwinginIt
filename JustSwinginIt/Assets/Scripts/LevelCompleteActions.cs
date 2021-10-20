@@ -26,13 +26,15 @@ public class LevelCompleteActions : MonoBehaviour
             AnalyticsResult levelComplete = Analytics.CustomEvent("Level Won");
             levelOver = true;
             PivotCounter.PivotCounterBegin();
-            UnityEngine.Debug.Log("Win log: " + levelComplete);
+            UnityEngine.Debug.Log("Level Complete analytics: " + levelComplete);
             LevelCompleteScreen.Setup();
 
             AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
             {
                 {"Missed Grapples", missedGrapples}
             });
+            UnityEngine.Debug.Log("Missed Grapples analytics: " + missedGrapples);
+
 
             StartCoroutine(WaitThenReload());
 
