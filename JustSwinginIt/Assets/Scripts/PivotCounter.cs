@@ -56,15 +56,19 @@ public class PivotCounter : MonoBehaviour
 		}		
 		
 		//3b. Calculate Y = percentPivotsUsed
-		Dictionary<string, object> analyticsData = new Dictionary<string, object>
-            {
-                {"% Pivots Used", percentPivotsUsed }
-            };
 		// Debug.Log("Level Number analytics: "+ levelNumber);
-		Debug.Log("#Pivots used analytics: "+pivotsUsed+"/"+numPivotObjects+" "+percentPivotsUsed+"%Pivots used");
+		Debug.Log("Percentage of Pivots used value log: "+pivotsUsed+"/"+numPivotObjects+" "+percentPivotsUsed+"%Pivots used");
 		
 		//3c. Generate Analytics. Responds "Ok".
-		AnalyticsResult analytics_result = Analytics.CustomEvent(("Level "+levelNumber), analyticsData);
+
+		//3. SEND PERCENTAGE OF PIVOTS USED FOR EACH LEVEL, LEVEL 1 ONLY FOR NOW
+		AnalyticsResult percentagePivotsAnalytics = Analytics.CustomEvent("3. Percentage of pivots used", new Dictionary<string, object>
+            {
+				{"Level number", 1},
+                {"% Pivots Used", percentPivotsUsed }
+				
+            });
+		Debug.Log("Percentage pivots used event log: "+percentagePivotsAnalytics);
 		// Debug.Log("Pivot Count Log: "+analytics_result);		
 	}
 }

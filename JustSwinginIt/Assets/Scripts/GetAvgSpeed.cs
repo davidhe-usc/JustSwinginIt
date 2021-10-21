@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using System;
 
 public class GetAvgSpeed : MonoBehaviour
 {
@@ -33,19 +34,78 @@ public class GetAvgSpeed : MonoBehaviour
         }
     }
 
+    private string GetSpeedCategory(int mySpeed){
+        if (0<=mySpeed && mySpeed<=20){
+            return "LOW";
+        }
+        else if(21<=mySpeed && mySpeed<=40){
+            return "NORMAL";
+        }
+        else if(41<=mySpeed && mySpeed<=60){
+            return "HIGH";
+        }
+        else{
+            return "EXTREME";
+        }
+    }
+
+      private string GetTimeCategory(int myTime){
+        if (0<=myTime && myTime<=10){
+            return "0-10s";
+        }
+        else if(11<=myTime && myTime<=20){
+            return "11-20s";
+        }
+        else if(21<=myTime && myTime<=30){
+            return "21-30s";
+        }
+        else if(31<=myTime && myTime<=40){
+            return "31-40s";
+        }
+        else{
+            return ">40s";
+        }
+    }
+
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>() != null && (collision == deathBed || collision == endPoint))
+        if (collision.GetComponent<Collider2D>() != null && (collision == endPoint))
         {
-            Debug.Log("Collided with " + collision.ToString());
-            Debug.Log("Avg. speed: " + averageSpeed.ToString());
+            // Debug.Log("Collided with " + collision.ToString());
+            // Debug.Log("Avg. speed: " + averageSpeed.ToString());
             keepUpdatingAvgSpeed = false;
+            int intSpeed= Convert.ToInt32(averageSpeed);
 
-            AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "Average Speed",
+            string speedCategory = GetSpeedCategory(intSpeed);
+
+            int intTime= Convert.ToInt32(lastTimeSpan);
+
+            string timeCategory = GetTimeCategory(intTime);
+
+            //8. SEND AVERAGE SPEED CATEGORY ON EACH LEVEL, LEVEL 1 FOR NOW
+            AnalyticsResult avgSpeedAnalytics = Analytics.CustomEvent(
+            "8. Average Speed Category",
             new Dictionary<string, object>{
-                {"AvgSpeed", averageSpeed}
+                {"Level Number",1},
+                {"Avg Speed Category", speedCategory}
             });
+
+            AnalyticsResult timeTakenAnalytics = Analytics.CustomEvent(
+            "2. Time taken to complete level",
+            new Dictionary<string, object>{
+                {"Level Number",1},
+                {"Time taken range", timeCategory}
+            });
+
+
+            UnityEngine.Debug.Log("Average speed event log: "+avgSpeedAnalytics);
+            UnityEngine.Debug.Log("Average speed category value log: "+speedCategory);
+            UnityEngine.Debug.Log("Time taken event log: "+timeTakenAnalytics);
+            UnityEngine.Debug.Log("Time range: "+timeCategory);
+
         }
     }
 

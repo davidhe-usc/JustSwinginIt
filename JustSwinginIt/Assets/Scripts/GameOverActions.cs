@@ -16,24 +16,33 @@ public class GameOverActions : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
 
       if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
-          AnalyticsResult deathResult = Analytics.CustomEvent(
-              "Player died",
+
+
+          //6. NUMBER OF DEATHS ON EACH LEVEL, LEVEL 1 ONLY FOR NOW
+          AnalyticsResult deathResultAnalytics = Analytics.CustomEvent(
+              "6. Unsuccessful attempts",
               new Dictionary<string,object>{
-                  {"Level", 1},
-                  {"Position", transform.position.x}
+                  {"Level Number", 1},
               }
           );
+
+      
 
 		//0b. Call PivotCounter to record data.
 		      levelOver = true;
 		      PivotCounter.PivotCounterBegin();         
 
-            AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
+            //9. SEND NUMBER OF MISSED GRAPPLES ON EACH LEVEL, LEVEL 1 ONLY FOR NOW
+            AnalyticsResult missedGrappleAnalytics = Analytics.CustomEvent("9. Missed Grapples", new Dictionary<string, object>
             {
+                {"Level Number", 1},
                 {"Missed Grapples", manager.missedGrapples}
+        
             });
-            UnityEngine.Debug.Log("Player dead analytics: "+ transform.position.x);
-            UnityEngine.Debug.Log("Missed Grapple analytics: "+ manager.missedGrapples);
+            UnityEngine.Debug.Log("Missed Grapples event log: " + missedGrappleAnalytics);
+            UnityEngine.Debug.Log("Player dead event log: "+ deathResultAnalytics);
+
+
             GameOverScreen.Setup();
             // StartCoroutine(WaitThenReload());
         }

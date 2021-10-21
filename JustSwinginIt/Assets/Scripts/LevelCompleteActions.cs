@@ -23,31 +23,41 @@ public class LevelCompleteActions : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.GetComponent<Collider2D>() != null && levelOver==false)
         {
-            AnalyticsResult levelComplete = Analytics.CustomEvent("Level Won");
+            //5.SEND LEVEL COMPLETE EVENT WHENEVER A USER WINS LEVEL, LEVEL 1 ONLY FOR NOW
+            AnalyticsResult levelCompleteAnalytics = Analytics.CustomEvent("5. Level Complete", new Dictionary<string,object>
+            {
+                {"Level Number", 1}
+            });
+
+
             levelOver = true;
             PivotCounter.PivotCounterBegin();
-            UnityEngine.Debug.Log("Level Complete analytics: " + levelComplete);
+            UnityEngine.Debug.Log("Level Complete event log: " + levelCompleteAnalytics);
             LevelCompleteScreen.Setup();
 
-            AnalyticsResult otherAnalytics = Analytics.CustomEvent("Missed Grapples", new Dictionary<string, object>
+
+            //9. SEND NUMBER OF MISSED GRAPPLES ON EACH LEVEL, LEVEL 1 ONLY FOR NOW
+            AnalyticsResult otherMissedGrappleAnalytics = Analytics.CustomEvent("9. Missed Grapples", new Dictionary<string, object>
             {
+                {"Level Number", 1},
                 {"Missed Grapples", missedGrapples}
+                
             });
-            UnityEngine.Debug.Log("Missed Grapples analytics: " + missedGrapples);
+            UnityEngine.Debug.Log("Missed Grapples value log: " + missedGrapples);
 
 
-            StartCoroutine(WaitThenReload());
+            // StartCoroutine(WaitThenReload());
 
             
             
         }
     }
 
-    IEnumerator WaitThenReload()
-    {
-        yield return new WaitForSeconds(5);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
+    // IEnumerator WaitThenReload()
+    // {
+    //     yield return new WaitForSeconds(5);
+    //     Scene scene = SceneManager.GetActiveScene();
+    //     SceneManager.LoadScene(scene.name);
+    // }
 
 }
