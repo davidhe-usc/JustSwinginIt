@@ -5,9 +5,11 @@ using UnityEngine.Analytics;
 
 public class DeathPosition : MonoBehaviour
 {
+    public BoxCollider2D deathCollider;
+    public BoxCollider2D win;
    private void OnTriggerEnter2D(Collider2D collision){
 
-      if (collision.GetComponent<Collider2D>()!=null){
+      if (collision == deathCollider || collision == win){
 
           int deathSegment = Mathf.RoundToInt(transform.position.x/20f);
             //7. NUMBER OF DEATHS AT EACH SEGMENT

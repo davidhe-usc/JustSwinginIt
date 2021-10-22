@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 547933452}
   - component: {fileID: 547933451}
   - component: {fileID: 547933450}
+  - component: {fileID: 547933453}
   m_Layer: 0
   m_Name: EndpointTrigger
   m_TagString: Untagged
@@ -852,6 +853,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &547933453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547933448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6704ee4409bf6e4fb99919339fff7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 593691012}
+  death: {fileID: 856121541}
+  win: {fileID: 547933451}
 --- !u!1 &572998238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1018,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004615df55cf3ec448e0943b375fd3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCollider: {fileID: 856121541}
+  win: {fileID: 547933451}
+--- !u!58 &593691012 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6944781869413608334, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+  m_PrefabInstance: {fileID: 1835883832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &593691013 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6944781869413608332, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
@@ -1149,6 +1172,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &746252509 stripped
@@ -1288,6 +1323,8 @@ GameObject:
   - component: {fileID: 856121539}
   - component: {fileID: 856121541}
   - component: {fileID: 856121542}
+  - component: {fileID: 856121544}
+  - component: {fileID: 856121543}
   m_Layer: 0
   m_Name: Death Bed
   m_TagString: Untagged
@@ -1403,6 +1440,36 @@ MonoBehaviour:
   PivotCounter: {fileID: 207134202}
   GameOverScreen: {fileID: 796020740}
   manager: {fileID: 547933450}
+--- !u!114 &856121543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856121538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6704ee4409bf6e4fb99919339fff7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 593691012}
+  death: {fileID: 856121541}
+  win: {fileID: 547933451}
+--- !u!114 &856121544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856121538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &946043409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1688,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!1001 &1521495753
@@ -1816,6 +1895,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!1 &1587530062
@@ -2173,6 +2264,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &1871944962 stripped
