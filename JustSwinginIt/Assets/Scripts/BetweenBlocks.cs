@@ -48,6 +48,7 @@ public class BetweenBlocks : MonoBehaviour
 
                 });
                 UnityEngine.Debug.Log("Time Between Each Platform event log: " + timeBetweenPlatforms);
+                UnityEngine.Debug.Log("Time between each platform value log:" + entry.Value);
             }
         }
         else {
