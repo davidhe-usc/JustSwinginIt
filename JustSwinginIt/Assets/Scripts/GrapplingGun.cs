@@ -69,6 +69,10 @@ public class GrapplingGun : MonoBehaviour
     private bool wasGrounded = false;
     private bool passedZip = false;
     private float landingSpeed;
+    private bool boosting;
+    private float boostTimer;
+    private float boostTimeLimits = 2;
+    private float boostFactor = 2;
 
 
     [Header("Analytics")]
@@ -80,6 +84,8 @@ public class GrapplingGun : MonoBehaviour
         grapplingRope.enabled = false;
         m_springJoint2D.enabled = false;
         m_rigidbody.velocity = new Vector2(startingSpeed, 0f);
+        boosting = false;
+        boostTimer = 0;
     }
 
     private void FixedUpdate()
@@ -94,7 +100,7 @@ public class GrapplingGun : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, .15f, filter2D.layerMask);
         if (isGrounded)
         {
-            if (!wasGrounded)
+            if (!wasGrounded || boosting)
             {
                 landingSpeed = m_rigidbody.velocity.x;
             }
@@ -108,7 +114,7 @@ public class GrapplingGun : MonoBehaviour
         else
             wasGrounded = false;
 
-        if (m_rigidbody.velocity.magnitude > maxSpeed)
+        if (m_rigidbody.velocity.magnitude > maxSpeed && !boosting)
         {
             m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed;
         }
@@ -196,6 +202,33 @@ public class GrapplingGun : MonoBehaviour
             m_rigidbody.gravityScale += Time.deltaTime / 2;
             if (m_rigidbody.gravityScale > 1)
                 m_rigidbody.gravityScale = 1;
+        }
+
+        if (boosting)
+        {
+            boostTimer += Time.deltaTime;
+            if (boostTimer >= boostTimeLimits)
+            {
+                boostTimer = 0;
+                boosting = false;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Powerup"))
+        {
+            if (!boosting)
+            {
+                boosting = true;
+                m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed * boostFactor;
+            }
+            else
+            {
+                boostTimer = 0;
+            }
+            Destroy(collision.gameObject);
         }
     }
 

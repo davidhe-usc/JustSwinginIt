@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5631489768521531522}
   - component: {fileID: 5631489768521531523}
   - component: {fileID: 5631489768521531520}
+  - component: {fileID: 3241645969590102896}
   m_Layer: 8
   m_Name: ZipPoint
   m_TagString: Powerup
@@ -110,3 +111,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3241645969590102896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631489768521531521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6eddb1e5d4bac1438c2f29ecce05544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasPivoted: 0
+  currentPivot: {fileID: 0}
