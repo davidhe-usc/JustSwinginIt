@@ -266,7 +266,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground extra
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &187136639 stripped
 Transform:
@@ -1078,7 +1079,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground extra 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &520357708 stripped
 Transform:
@@ -1148,6 +1150,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &545660631 stripped
@@ -4110,6 +4124,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: win
+      value: 
+      objectReference: {fileID: 547933451}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 856121541}
+    - target: {fileID: 4597039608046798556, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 593691012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c131125fcd4443f3958b1c4d1f63ee6, type: 3}
 --- !u!4 &2076397626 stripped
