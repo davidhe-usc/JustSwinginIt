@@ -230,6 +230,11 @@ public class GrapplingGun : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+
+        if (collision.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)

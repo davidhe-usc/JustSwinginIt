@@ -6,7 +6,6 @@ using UnityEngine.Analytics;
 public class BetweenBlocks : MonoBehaviour
 {
     static float timeInterval;
-    float timeInterval2;
     public CircleCollider2D player;
     public BoxCollider2D death;
     public BoxCollider2D win;
@@ -29,7 +28,6 @@ public class BetweenBlocks : MonoBehaviour
         x = 0;
         platform = 0;
         timeInterval = 0;
-        timeInterval2 = 0;
         change = false;
     }
 
