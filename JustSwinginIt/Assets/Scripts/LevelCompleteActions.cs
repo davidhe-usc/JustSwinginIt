@@ -45,6 +45,12 @@ public class LevelCompleteActions : MonoBehaviour
             });
             UnityEngine.Debug.Log("Missed Grapples value log: " + missedGrapples);
 
+            AnalyticsResult coinCountAnalytics = Analytics.CustomEvent("1. Coins collected", new Dictionary<string, object>
+            {
+                {"Level Number", 1},
+                {"Coins collected", ScoreManager.instance.score}
+            });
+            UnityEngine.Debug.Log("Coin count value log :" + ScoreManager.instance.score);
 
             // StartCoroutine(WaitThenReload());
 

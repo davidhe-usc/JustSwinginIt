@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+            UnityEngine.Debug.Log("COin collision log");
             ScoreManager.instance.ChangeScore(coinValue);
     }
 }
