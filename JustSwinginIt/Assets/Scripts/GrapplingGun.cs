@@ -73,6 +73,8 @@ public class GrapplingGun : MonoBehaviour
     private float boostTimer;
     private float boostTimeLimits = 2;
     private float boostFactor = 2;
+    private int directionX = 0;
+    private int directionY = 0;
 
 
     [Header("Analytics")]
@@ -150,6 +152,7 @@ public class GrapplingGun : MonoBehaviour
                         float currXDistance = grapplePoint.x - currPos.x;
                         float currYDistance = grapplePoint.y - currPos.y;
 
+
                         float currSpeed = m_rigidbody.velocity.magnitude;
 
                         if (currSpeed >= maxSpeed - (maxSpeed / 4))
@@ -165,8 +168,12 @@ public class GrapplingGun : MonoBehaviour
 
                         //Debug.Log(currDistance);
 
-                        if (currDistance <= 0.5f || (currXDistance <= 0.25f && m_rigidbody.velocity.x > launchSpeed) || (currYDistance <= 0.25f && m_rigidbody.velocity.y > launchSpeed))
+                        if (currDistance <= 0.5f || ((currXDistance * directionX <= 0) && Math.Abs(m_rigidbody.velocity.x) > launchSpeed)
+                            || ((currYDistance * directionY <= 0) && Math.Abs(m_rigidbody.velocity.y) > launchSpeed))
+
                         {
+                            Debug.Log("X: " + currXDistance * directionX);
+                            Debug.Log("Y: " + currYDistance * directionY);
                             grapplingRope.enabled = false;
                             grapplingRope.isGrappling = false;
                             m_rigidbody.gravityScale = .5f;
@@ -197,7 +204,7 @@ public class GrapplingGun : MonoBehaviour
             RotateGun(mousePos, true);
         }
 
-        if (m_rigidbody.gravityScale < 1)
+        if (m_rigidbody.gravityScale < 1 && m_rigidbody.gravityScale != 0)
         {
             m_rigidbody.gravityScale += Time.deltaTime / 2;
             if (m_rigidbody.gravityScale > 1)
@@ -366,6 +373,10 @@ public class GrapplingGun : MonoBehaviour
                 case LaunchType.Zip_Launch:
                     m_rigidbody.gravityScale = 0;
                     m_rigidbody.velocity = Vector2.zero;
+                    if (transform.position.x < grapplePoint.x) directionX = 1;
+                    else directionX = -1;
+                    if (transform.position.y < grapplePoint.y) directionY = 1;
+                    else directionY = -1;
                     break;
             }
         }
