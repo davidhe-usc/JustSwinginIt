@@ -61,6 +61,9 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private float clickRadius = 10;
 
     [SerializeField] private float startingSpeed = 10;
+    
+    [Header("Power Up Factor")]
+    [SerializeField] private float boostFactor = 1.5f;
 
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
@@ -72,7 +75,6 @@ public class GrapplingGun : MonoBehaviour
     private bool boosting;
     private float boostTimer;
     private float boostTimeLimits = 2;
-    private float boostFactor = 2;
     private int directionX = 0;
     private int directionY = 0;
 
