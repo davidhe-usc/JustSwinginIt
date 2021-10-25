@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using System;
 
 public class BetweenBlocks : MonoBehaviour
 {
@@ -31,6 +32,18 @@ public class BetweenBlocks : MonoBehaviour
         change = false;
     }
 
+    private string GetPlatformTimeCategory(int platformTime){
+        if (0<=platformTime && platformTime<=2){
+            return "0-2s";
+        }
+        else if(2<=platformTime && platformTime<=5){
+            return "2-5s";
+        }
+        else{
+            return ">5s";
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision2)
     {
@@ -40,13 +53,16 @@ public class BetweenBlocks : MonoBehaviour
 
             foreach (KeyValuePair<string, float> entry in betweenValues)
             {
-                AnalyticsResult timeBetweenPlatforms = Analytics.CustomEvent("10. time to reach platform " + entry.Key, new Dictionary<string, object>
+                int platformTime = Convert.ToInt32(entry.Value);
+                string platformTimeCategory = GetPlatformTimeCategory(platformTime);
+
+                AnalyticsResult timeBetweenPlatforms = Analytics.CustomEvent("10. Time taken to reach platform " + entry.Key, new Dictionary<string, object>
                 {
-                    {"time", entry.Value}
+                    {"time", platformTimeCategory}
 
                 });
                 UnityEngine.Debug.Log("10. Time Between Each Platform event log: " + timeBetweenPlatforms);
-                UnityEngine.Debug.Log("Time between each platform value log:" + entry.Value);
+                UnityEngine.Debug.Log("Time between each platform value log:" + entry.Key+" "+platformTimeCategory);
             }
         }
         else {
