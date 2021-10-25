@@ -35,13 +35,13 @@ public class GetAvgSpeed : MonoBehaviour
     }
 
     private string GetSpeedCategory(int mySpeed){
-        if (0<=mySpeed && mySpeed<=20){
+        if (0<=mySpeed && mySpeed<=15){
             return "LOW";
         }
-        else if(21<=mySpeed && mySpeed<=40){
+        else if(15<=mySpeed && mySpeed<=30){
             return "NORMAL";
         }
-        else if(41<=mySpeed && mySpeed<=60){
+        else if(31<=mySpeed && mySpeed<=50){
             return "HIGH";
         }
         else{
@@ -59,11 +59,11 @@ public class GetAvgSpeed : MonoBehaviour
         else if(21<=myTime && myTime<=30){
             return "21-30s";
         }
-        else if(31<=myTime && myTime<=40){
-            return "31-40s";
+        else if(31<=myTime && myTime<=50){
+            return "31-50s";
         }
         else{
-            return ">40s";
+            return ">50s";
         }
     }
 
