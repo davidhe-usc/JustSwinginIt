@@ -32,7 +32,7 @@ public class LevelCompleteActions : MonoBehaviour
 
             levelOver = true;
             PivotCounter.PivotCounterBegin();
-            UnityEngine.Debug.Log("Level Complete event log: " + levelCompleteAnalytics);
+            UnityEngine.Debug.Log("5. Level Complete event log: " + levelCompleteAnalytics);
             LevelCompleteScreen.Setup();
 
 
@@ -51,6 +51,8 @@ public class LevelCompleteActions : MonoBehaviour
                 {"Coins collected", ScoreManager.instance.score}
             });
             UnityEngine.Debug.Log("Coin count value log :" + ScoreManager.instance.score);
+            UnityEngine.Debug.Log("1. Coin count event log :" + coinCountAnalytics);
+
 
             // StartCoroutine(WaitThenReload());
 

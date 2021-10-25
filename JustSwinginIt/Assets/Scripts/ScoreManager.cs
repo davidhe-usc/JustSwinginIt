@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UnityEngine.Debug.Log("scoremanage start function");
 
         if (instance == null)
             instance = this;
@@ -20,7 +19,6 @@ public class ScoreManager : MonoBehaviour
 
     public void ChangeScore(int coinValue)
     {
-        UnityEngine.Debug.Log("changescore function here");
         score += coinValue;
         text.text = "X" + score.ToString();
     }

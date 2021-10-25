@@ -101,9 +101,9 @@ public class GetAvgSpeed : MonoBehaviour
             });
 
 
-            UnityEngine.Debug.Log("Average speed event log: "+avgSpeedAnalytics);
+            UnityEngine.Debug.Log("8. Average speed event log: "+avgSpeedAnalytics);
             UnityEngine.Debug.Log("Average speed category value log: "+speedCategory);
-            UnityEngine.Debug.Log("Time taken event log: "+timeTakenAnalytics);
+            UnityEngine.Debug.Log("2. Time taken event log: "+timeTakenAnalytics);
             UnityEngine.Debug.Log("Time range: "+timeCategory);
 
         }

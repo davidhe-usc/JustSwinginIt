@@ -19,7 +19,7 @@ public class DeathPosition : MonoBehaviour
                   {"Segment", deathSegment}
               }
           );
-        UnityEngine.Debug.Log("Death segment event log: "+ deathSegmentAnalytics);
+        UnityEngine.Debug.Log("7. Death segment event log: "+ deathSegmentAnalytics);
         UnityEngine.Debug.Log("Death segment value: "+ deathSegment);
 
         }

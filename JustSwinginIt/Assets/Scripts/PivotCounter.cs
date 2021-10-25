@@ -88,7 +88,7 @@ public class PivotCounter : MonoBehaviour
                 {"% Pivots Used", percentPivotsUsed }
 				
             });
-		Debug.Log("Percentage pivots used event log: "+percentagePivotsAnalytics);
+		Debug.Log("3. Percentage pivots used event log: "+percentagePivotsAnalytics);
 
 		AnalyticsResult zipPointsAnalytics = Analytics.CustomEvent("4. Number of zip points used", new Dictionary<string, object>
             {
@@ -96,7 +96,8 @@ public class PivotCounter : MonoBehaviour
                 {"Number of Zips Used", zipsUsed }
 				
             });
-		Debug.Log("Zip points event log: "+zipPointsAnalytics);
+		Debug.Log("4. Zip points event log: "+zipPointsAnalytics);
+		Debug.Log("Zip points value log: "+zipsUsed);
 		// Debug.Log("Pivot Count Log: "+analytics_result);		
 	}
 }

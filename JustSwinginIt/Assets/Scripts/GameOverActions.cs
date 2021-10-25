@@ -39,8 +39,8 @@ public class GameOverActions : MonoBehaviour
                 {"Missed Grapples", manager.missedGrapples}
         
             });
-            UnityEngine.Debug.Log("Missed Grapples event log: " + missedGrappleAnalytics);
-            UnityEngine.Debug.Log("Player dead event log: "+ deathResultAnalytics);
+            UnityEngine.Debug.Log("9. Missed Grapples event log: " + missedGrappleAnalytics);
+            UnityEngine.Debug.Log("6. Player dead event log: "+ deathResultAnalytics);
 
 
             GameOverScreen.Setup();
