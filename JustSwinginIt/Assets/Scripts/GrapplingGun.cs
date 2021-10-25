@@ -76,6 +76,8 @@ public class GrapplingGun : MonoBehaviour
     private int directionX = 0;
     private int directionY = 0;
 
+    public int coinValue = 1;
+
 
     [Header("Analytics")]
     [SerializeField]
@@ -240,6 +242,8 @@ public class GrapplingGun : MonoBehaviour
 
         if (collision.CompareTag("Coin"))
         {
+            ScoreManager.instance.ChangeScore(coinValue);
+
             Destroy(collision.gameObject);
         }
     }
