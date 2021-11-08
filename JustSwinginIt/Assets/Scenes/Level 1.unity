@@ -2956,17 +2956,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Follow Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 6062018130698169939, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
+      propertyPath: orthographic size
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 6062018130698170028, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6062018130698170028, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6062018130698170028, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.54
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6062018130698170028, guid: 7370182cdb2c1443c8330e159b788433, type: 3}
       propertyPath: m_LocalPosition.z
