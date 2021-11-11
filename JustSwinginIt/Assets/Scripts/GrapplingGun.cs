@@ -396,4 +396,9 @@ public class GrapplingGun : MonoBehaviour
             Gizmos.DrawWireSphere(firePoint.position, maxDistance);
         }
     }
+
+    public bool onGround()
+    {
+        return isGrounded;
+    }
 }
