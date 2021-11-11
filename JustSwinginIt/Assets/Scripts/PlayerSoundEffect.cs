@@ -27,7 +27,9 @@ public class PlayerSoundEffect : MonoBehaviour
 
         if (grapplingGun.GetComponent<GrapplingGun>().onGround())
         {
-            GetComponent<AudioSource>().Stop();
+            if (!Input.GetKey(KeyCode.Mouse0)){
+                GetComponent<AudioSource>().Stop();
+            }
         }
 
         else if (shootOnce && !GetComponent<AudioSource>().isPlaying)
