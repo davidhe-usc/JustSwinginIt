@@ -5,33 +5,44 @@ using UnityEngine;
 public class GuideGrappleFlash : MonoBehaviour
 {
 	float flashTime = 0.25f;
-	Color originalColor;
-	[SerializeField] GameObject gameObject;
-	//SpriteRenderer renderer;
+	Color originalColorGrapple;
+	Color originalColorGrappleRadius;
+	[SerializeField] GameObject grapple;
+	[SerializeField] GameObject grappleRadius;
 	bool hasGrappled = false;
+	int grCount = 0;
 	
     void Start()
     {
-		//renderer = currentPivot.GetComponent<SpriteRenderer>();
-        originalColor = gameObject.GetComponent<SpriteRenderer>().material.color;
-		//originalColor = GetComponent<Renderer>().color;
+        originalColorGrapple = grapple.GetComponent<SpriteRenderer>().material.color;
 		Invoke("FlashColor", flashTime);
+		originalColorGrappleRadius = grappleRadius.GetComponent<SpriteRenderer>().material.color;
+		Invoke("FlashOpaque", flashTime);
     }
 
 	void FlashColor(){
-		//color
-		gameObject.GetComponent<SpriteRenderer>().material.color = new Color(0,1,0,1);
-		//renderer.color = Color(1f/255f, 0f/255f, 0f/255f, 1);
+		grapple.GetComponent<SpriteRenderer>().material.color = new Color(0,1,0,1);
 		Invoke("FlashWhite", flashTime);
 	}
 	
 	void FlashWhite(){
-		//white
-		gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1,1,1,1);
-		//renderer.color = Color(1f/255f, 1f/255f, 1f/255f, 1);				
+		grapple.GetComponent<SpriteRenderer>().material.color = new Color(1,1,1,1);
 		if(hasGrappled == false){ 
 			//Player hasn't clicked on grapple yet.
 			Invoke("FlashColor", flashTime);
+		}
+	}
+	
+	void FlashColorBlue(){
+		grCount++;
+		grappleRadius.GetComponent<SpriteRenderer>().material.color = new Color(0,0,1,1);
+		Invoke("FlashOpaque", flashTime);
+	}
+	
+	void FlashOpaque(){
+		grappleRadius.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
+		if(grCount <= 3){
+			Invoke("FlashColorBlue", flashTime);
 		}
 	}
 	

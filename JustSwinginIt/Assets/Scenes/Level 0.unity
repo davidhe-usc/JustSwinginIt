@@ -2255,7 +2255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531397374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 40, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 35, z: 1}
   m_Children: []
   m_Father: {fileID: 54445377}
@@ -2742,7 +2742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340691369b0d1a843ba695855a76052d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 1748404166}
+  grapple: {fileID: 1748404166}
+  grappleRadius: {fileID: 1531397374}
 --- !u!1001 &1773303043
 PrefabInstance:
   m_ObjectHideFlags: 0
