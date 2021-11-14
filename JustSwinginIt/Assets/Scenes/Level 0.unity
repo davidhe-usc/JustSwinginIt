@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEndpoint: {fileID: 1938952736}
-  gameOver: {fileID: 1075697688}
+  gameOver: {fileID: 0}
   levelNumber: 1
 --- !u!4 &351502406
 Transform:
@@ -1308,8 +1308,8 @@ GameObject:
   - component: {fileID: 1075697693}
   - component: {fileID: 1075697692}
   - component: {fileID: 1075697689}
-  - component: {fileID: 1075697688}
   - component: {fileID: 1075697691}
+  - component: {fileID: 1075697688}
   - component: {fileID: 1075697690}
   m_Layer: 0
   m_Name: Death Bed
@@ -1327,13 +1327,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1075697687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4d2b29e8892754b88675ea004a9a10, type: 3}
+  m_Script: {fileID: 11500000, guid: 98171ed716b0e7148875235df5395ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelOver: 0
   PivotCounter: {fileID: 351502405}
-  GameOverScreen: {fileID: 1255296288}
-  manager: {fileID: 1938952736}
+  GameOverScreen: {fileID: 0}
+  player: {fileID: 1035796762}
 --- !u!61 &1075697689
 BoxCollider2D:
   m_ObjectHideFlags: 0
