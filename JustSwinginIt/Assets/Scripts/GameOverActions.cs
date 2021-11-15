@@ -19,7 +19,6 @@ public class GameOverActions : MonoBehaviour
 
 	void Start(){
 		direction = player.transform.position;
-		Debug.Log(direction);
 	}
 	
     private void OnTriggerEnter2D(Collider2D collision){

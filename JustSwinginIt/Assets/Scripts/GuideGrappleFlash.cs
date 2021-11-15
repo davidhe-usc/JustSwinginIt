@@ -7,10 +7,18 @@ public class GuideGrappleFlash : MonoBehaviour
 	float flashTime = 0.25f;
 	Color originalColorGrapple;
 	Color originalColorGrappleRadius;
+	Color originalColorMouseClick;
+	Color originalColorPickUpHand;
 	[SerializeField] GameObject grapple;
 	[SerializeField] GameObject grappleRadius;
+	[SerializeField] GameObject mouseClick;
+	[SerializeField] GameObject pickUpHand;
+	[SerializeField] GameObject coin;
 	bool hasGrappled = false;
+	bool hasPickedUpCoin = false;
 	int grCount = 0;
+	bool visibleClick = true;
+	bool visibleHand = true;
 	
     void Start()
     {
@@ -18,6 +26,8 @@ public class GuideGrappleFlash : MonoBehaviour
 		Invoke("FlashColor", flashTime);
 		originalColorGrappleRadius = grappleRadius.GetComponent<SpriteRenderer>().material.color;
 		Invoke("FlashOpaque", flashTime);
+		originalColorMouseClick = mouseClick.GetComponent<SpriteRenderer>().material.color;
+		originalColorPickUpHand = pickUpHand.GetComponent<SpriteRenderer>().material.color;
     }
 
 	void FlashColor(){
@@ -48,8 +58,32 @@ public class GuideGrappleFlash : MonoBehaviour
 	
 	void Update(){
 		var objScript = GetComponent<HasPivoted>();
+		if(hasGrappled==false){
+			if(visibleClick==true){
+				mouseClick.GetComponent<SpriteRenderer>().material.color = originalColorMouseClick;
+				visibleClick = false;
+			}
+			else{
+				mouseClick.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
+				visibleClick = true;
+			}
+		}
+		if(hasPickedUpCoin==false){
+			if(visibleHand==true){
+				pickUpHand.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
+				visibleHand = false;
+			}
+			else{
+				pickUpHand.GetComponent<SpriteRenderer>().material.color = originalColorPickUpHand;
+				visibleHand = true;
+			}
+		}
 		if (objScript.HasThisPivoted() == true){
 			hasGrappled = true;
+			mouseClick.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
+		}
+		if(coin==null){
+			hasPickedUpCoin = true;
 		}
 	}
 	
