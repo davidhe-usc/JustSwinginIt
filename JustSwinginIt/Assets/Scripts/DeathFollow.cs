@@ -10,15 +10,16 @@ public class DeathFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        transform.position = new Vector2(transform.position.x, -screenBounds.y);
-        maxHeight = transform.position.y;
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.transform.position.z));
+        transform.position = new Vector2(transform.position.x, screenBounds.y+1);
+        maxHeight = transform.position.y + 1;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        
-        transform.position = new Vector2(transform.position.x, Mathf.Max(maxHeight, -screenBounds.y));
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.transform.position.z));
+        transform.position = new Vector2(transform.position.x, Mathf.Min(maxHeight, screenBounds.y+1));
+        Debug.Log(transform.position.y);
     }
 }
