@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelEndpoint: {fileID: 1938952736}
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 1075697694}
   levelNumber: 1
 --- !u!4 &351502406
 Transform:
@@ -1046,7 +1046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 981208925}
   - component: {fileID: 981208926}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GuideClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 54445377}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &981208926
 SpriteRenderer:
@@ -1475,8 +1475,8 @@ GameObject:
   - component: {fileID: 1075697692}
   - component: {fileID: 1075697689}
   - component: {fileID: 1075697691}
-  - component: {fileID: 1075697688}
   - component: {fileID: 1075697690}
+  - component: {fileID: 1075697694}
   m_Layer: 0
   m_Name: Death Bed
   m_TagString: Untagged
@@ -1484,22 +1484,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1075697688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075697687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98171ed716b0e7148875235df5395ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelOver: 0
-  PivotCounter: {fileID: 351502405}
-  GameOverScreen: {fileID: 0}
-  player: {fileID: 1035796762}
 --- !u!61 &1075697689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1622,6 +1606,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075697694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075697687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4d2b29e8892754b88675ea004a9a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelOver: 0
+  PivotCounter: {fileID: 351502405}
+  GameOverScreen: {fileID: 1255296288}
+  manager: {fileID: 1938952736}
+  noDeathMode: 0
+  player: {fileID: 1035796762}
 --- !u!1 &1152431467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2406,7 +2408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531397375}
   - component: {fileID: 1531397376}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GuideGrapple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2425,7 +2427,7 @@ Transform:
   m_LocalScale: {x: 5, y: 35, z: 1}
   m_Children: []
   m_Father: {fileID: 54445377}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1531397376
 SpriteRenderer:

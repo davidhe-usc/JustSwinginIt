@@ -21,7 +21,7 @@ public class GuideGrappleFlash : MonoBehaviour
     }
 
 	void FlashColor(){
-		grapple.GetComponent<SpriteRenderer>().material.color = new Color(0,1,0,1);
+		grapple.GetComponent<SpriteRenderer>().material.color = new Color(0,0,1,1);
 		Invoke("FlashWhite", flashTime);
 	}
 	
@@ -35,7 +35,7 @@ public class GuideGrappleFlash : MonoBehaviour
 	
 	void FlashColorBlue(){
 		grCount++;
-		grappleRadius.GetComponent<SpriteRenderer>().material.color = new Color(0,0,1,1);
+		grappleRadius.GetComponent<SpriteRenderer>().material.color = new Color(0,1,1,1);
 		Invoke("FlashOpaque", flashTime);
 	}
 	
