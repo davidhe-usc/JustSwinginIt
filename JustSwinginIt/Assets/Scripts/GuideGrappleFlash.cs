@@ -84,6 +84,7 @@ public class GuideGrappleFlash : MonoBehaviour
 		}
 		if(coin==null){
 			hasPickedUpCoin = true;
+			pickUpHand.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
 		}
 	}
 	
