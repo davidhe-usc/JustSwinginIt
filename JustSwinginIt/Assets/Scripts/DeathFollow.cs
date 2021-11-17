@@ -20,6 +20,6 @@ public class DeathFollow : MonoBehaviour
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.transform.position.z));
         transform.position = new Vector2(transform.position.x, Mathf.Min(maxHeight, screenBounds.y+1));
-        Debug.Log(transform.position.y);
+        // Debug.Log(transform.position.y);
     }
 }
