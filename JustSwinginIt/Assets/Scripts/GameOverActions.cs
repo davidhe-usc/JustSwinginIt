@@ -11,11 +11,19 @@ public class GameOverActions : MonoBehaviour
 	  [SerializeField] public PivotCounter PivotCounter;
     public GameOverScreen GameOverScreen;
     [SerializeField] private LevelCompleteActions manager;
+	
+	[SerializeField] bool noDeathMode;
+	[SerializeField] private GameObject player;
+    Vector3 direction = new Vector3(0,0,0);
 
 
+	void Start(){
+		direction = player.transform.position;
+	}
+	
     private void OnTriggerEnter2D(Collider2D collision){
 
-      if (collision.GetComponent<Collider2D>()!=null && levelOver==false){
+      if (collision.GetComponent<Collider2D>()!=null && levelOver==false && noDeathMode==false){
 
 
           //6. NUMBER OF DEATHS ON EACH LEVEL, LEVEL 1 ONLY FOR NOW
@@ -46,6 +54,10 @@ public class GameOverActions : MonoBehaviour
             GameOverScreen.Setup();
             // StartCoroutine(WaitThenReload());
         }
+		else if(collision.GetComponent<Collider2D>()!=null && levelOver==false && noDeathMode==true){
+			Vector3 poseCamera = direction;
+            player.transform.position = poseCamera;
+		}
     }
 
     // IEnumerator WaitThenReload()

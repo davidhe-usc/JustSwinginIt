@@ -2524,6 +2524,8 @@ MonoBehaviour:
   PivotCounter: {fileID: 207134202}
   GameOverScreen: {fileID: 796020740}
   manager: {fileID: 547933450}
+  noDeathMode: 0
+  player: {fileID: 593691010}
 --- !u!114 &856121543
 MonoBehaviour:
   m_ObjectHideFlags: 0
