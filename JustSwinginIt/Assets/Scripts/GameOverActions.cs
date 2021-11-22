@@ -14,6 +14,7 @@ public class GameOverActions : MonoBehaviour
 	
 	[SerializeField] bool noDeathMode;
 	[SerializeField] private GameObject player;
+    [SerializeField] private GrapplingRope rope;
     Vector3 direction = new Vector3(0,0,0);
 
 
@@ -57,6 +58,8 @@ public class GameOverActions : MonoBehaviour
 		else if(collision.GetComponent<Collider2D>()!=null && levelOver==false && noDeathMode==true){
 			Vector3 poseCamera = direction;
             player.transform.position = poseCamera;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rope.enabled = false;
 		}
     }
 
