@@ -291,7 +291,11 @@ public class GrapplingGun : MonoBehaviour
 
         if (bestTarget != null)
         {
-            Vector2 closestPoint = bestTarget.ClosestPoint(firePoint.position);
+            Vector2 closestPoint;
+            Vector2 pointerPoint = bestTarget.ClosestPoint(click);
+            RaycastHit2D ray = Physics2D.Raycast(firePoint.position, pointerPoint - (Vector2) firePoint.position, Mathf.Infinity, filter2D.layerMask);
+            closestPoint = ray.point;
+            
             Vector2 distanceVector = closestPoint - (Vector2)firePoint.position;
             if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
             {
