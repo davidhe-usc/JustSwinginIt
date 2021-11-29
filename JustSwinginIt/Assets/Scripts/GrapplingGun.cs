@@ -244,7 +244,8 @@ public class GrapplingGun : MonoBehaviour
 
         if (collision.CompareTag("Coin"))
         {
-            FindObjectOfType<ScoreManager>().ChangeScore(coinValue);
+            ScoreManager.instance.ChangeScore(coinValue);
+
             Destroy(collision.gameObject);
         }
     }
