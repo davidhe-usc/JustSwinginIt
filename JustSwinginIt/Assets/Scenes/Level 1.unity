@@ -4081,7 +4081,7 @@ PrefabInstance:
       objectReference: {fileID: 547933450}
     - target: {fileID: 2353205342877022805, guid: 13fbaff20398ec247b44cee901968ff6, type: 3}
       propertyPath: noDeathMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2353205342877022805, guid: 13fbaff20398ec247b44cee901968ff6, type: 3}
       propertyPath: PivotCounter
