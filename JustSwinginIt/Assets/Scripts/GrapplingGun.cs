@@ -235,7 +235,7 @@ public class GrapplingGun : MonoBehaviour
             if (!boosting)
             {
                 boosting = true;
-                m_rigidbody.velocity = transform.right * maxSpeed * boostFactor;
+                m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed * boostFactor;
             }
             else
             {
