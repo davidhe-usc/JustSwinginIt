@@ -32,33 +32,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    public void Level0() {
-        
-        SceneManager.LoadScene("Level 0");
-        Time.timeScale = 1f;
-        pauseMenuUI.SetActive(false);
-        GameIsPaused = false;
-       
-    }
-
-    public void Level1() {
-       
-        SceneManager.LoadScene("Level 1");
-        pauseMenuUI.SetActive(false);
-        GameIsPaused = false;
-        Time.timeScale = 1f;
-        
-    }
-
-    public void Level2() {
-        
-        SceneManager.LoadScene("Level 2");
-        pauseMenuUI.SetActive(false);
-        GameIsPaused = false;
-        Time.timeScale = 1f;
-        
-    }
-
     void Pause() {
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
