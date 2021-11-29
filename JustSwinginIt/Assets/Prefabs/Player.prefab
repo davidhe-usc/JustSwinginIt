@@ -300,7 +300,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6944781868715329470}
-  m_Layer: 7
+  - component: {fileID: 6130817874051630916}
+  - component: {fileID: 5653671643277301324}
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +324,34 @@ Transform:
   m_Father: {fileID: 6944781870673438519}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6130817874051630916
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944781868715329471}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 80
+--- !u!114 &5653671643277301324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944781868715329471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecafb7817ae761d42a8e5644b3555cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6944781868841748793
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +515,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.3000001
+  m_Distance: 77.10363
   m_DampingRatio: 1
   m_Frequency: 1000000
 --- !u!58 &6944781869413608334

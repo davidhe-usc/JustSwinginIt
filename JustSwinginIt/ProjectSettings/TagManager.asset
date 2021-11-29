@@ -19,7 +19,7 @@ TagManager:
   - Zip
   - Grappable
   - Ground
-  - 
+  - Detector
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tutorial
+    uniqueID: 3591477459
     locked: 0

@@ -14,7 +14,7 @@ public class PlayerSoundEffect : MonoBehaviour
         grapplingGun = GameObject.Find("GrapplingGun");
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

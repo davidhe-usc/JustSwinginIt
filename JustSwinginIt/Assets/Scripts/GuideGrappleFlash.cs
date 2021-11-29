@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GuideGrappleFlash : MonoBehaviour
 {
-	float flashTime = 0.25f;
+	float flashTime = .25f;
+    float flashTimer = 0.0f;
 	Color originalColorGrapple;
 	Color originalColorGrappleRadius;
 	Color originalColorMouseClick;
@@ -22,10 +23,10 @@ public class GuideGrappleFlash : MonoBehaviour
 	
     void Start()
     {
-        originalColorGrapple = grapple.GetComponent<SpriteRenderer>().material.color;
-		Invoke("FlashColor", flashTime);
-		originalColorGrappleRadius = grappleRadius.GetComponent<SpriteRenderer>().material.color;
-		Invoke("FlashOpaque", flashTime);
+        //originalColorGrapple = grapple.GetComponent<SpriteRenderer>().material.color;
+		//Invoke("FlashColor", flashTime);
+		//originalColorGrappleRadius = grappleRadius.GetComponent<SpriteRenderer>().material.color;
+		//Invoke("FlashOpaque", flashTime);
 		originalColorMouseClick = mouseClick.GetComponent<SpriteRenderer>().material.color;
 		originalColorPickUpHand = pickUpHand.GetComponent<SpriteRenderer>().material.color;
     }
@@ -57,26 +58,39 @@ public class GuideGrappleFlash : MonoBehaviour
 	}
 	
 	void Update(){
-		var objScript = GetComponent<HasPivoted>();
+		var objScript = grapple.GetComponent<HasPivoted>();
 		if(hasGrappled==false){
-			if(visibleClick==true){
+			if(visibleClick==true && flashTimer <= 0){
 				mouseClick.GetComponent<SpriteRenderer>().material.color = originalColorMouseClick;
 				visibleClick = false;
+                flashTimer = flashTime;
+                
 			}
-			else{
+			else if (flashTimer <= 0){
 				mouseClick.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
 				visibleClick = true;
+                flashTimer = flashTime;
 			}
+            else
+            {
+                flashTimer -= Time.deltaTime;
+            }
 		}
 		if(hasPickedUpCoin==false){
-			if(visibleHand==true){
+			if(visibleHand==true && flashTimer <= 0){
 				pickUpHand.GetComponent<SpriteRenderer>().material.color = new Color(0,0,0,0);
 				visibleHand = false;
+                flashTimer = flashTime;
 			}
-			else{
+			else if (flashTimer <= 0){
 				pickUpHand.GetComponent<SpriteRenderer>().material.color = originalColorPickUpHand;
 				visibleHand = true;
+                flashTimer = flashTime;
 			}
+            else
+            {
+                flashTimer -= Time.deltaTime;
+            }
 		}
 		if (objScript.HasThisPivoted() == true){
 			hasGrappled = true;

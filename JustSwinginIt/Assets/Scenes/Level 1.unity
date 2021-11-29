@@ -3358,6 +3358,18 @@ PrefabInstance:
       propertyPath: endPoint
       value: 
       objectReference: {fileID: 547933451}
+    - target: {fileID: 1744863887750199187, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130817874051630916, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944781869413608334, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6944781869413608335, guid: 5356e8ee4c15b4da495641607f5368bc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4067,6 +4079,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 547933450}
+    - target: {fileID: 2353205342877022805, guid: 13fbaff20398ec247b44cee901968ff6, type: 3}
+      propertyPath: noDeathMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2353205342877022805, guid: 13fbaff20398ec247b44cee901968ff6, type: 3}
       propertyPath: PivotCounter
       value: 
