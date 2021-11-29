@@ -79,6 +79,8 @@ public class GrapplingGun : MonoBehaviour
     private int directionY = 0;
 
     public int coinValue = 1;
+    public AudioClip coin;
+    public AudioClip boost;
 
 
     [Header("Analytics")]
@@ -240,6 +242,7 @@ public class GrapplingGun : MonoBehaviour
                 boostTimer = 0;
             }
             Destroy(collision.gameObject);
+            GetComponent<AudioSource>().PlayOneShot(boost);
         }
 
         if (collision.CompareTag("Coin"))
@@ -247,6 +250,7 @@ public class GrapplingGun : MonoBehaviour
             ScoreManager.instance.ChangeScore(coinValue);
 
             Destroy(collision.gameObject);
+            GetComponent<AudioSource>().PlayOneShot(coin);
         }
     }
 

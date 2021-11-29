@@ -35,7 +35,7 @@ public class GameOverActions : MonoBehaviour
               }
           );
 
-      
+        
 
 		//0b. Call PivotCounter to record data.
 		      levelOver = true;
@@ -53,6 +53,7 @@ public class GameOverActions : MonoBehaviour
 
 
             GameOverScreen.Setup();
+            FindObjectOfType<ScoreManager>().Finish();
             // StartCoroutine(WaitThenReload());
         }
 		else if(collision.GetComponent<Collider2D>()!=null && levelOver==false && noDeathMode==true){

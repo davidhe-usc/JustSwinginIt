@@ -23,7 +23,12 @@ public class PauseMenu : MonoBehaviour
                 Pause();
                 
             }
-        }   
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetGame();
+        }
     }
 
     public void Resume() {

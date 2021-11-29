@@ -14,6 +14,8 @@ public class LevelCompleteActions : MonoBehaviour
 
     public float missedGrapples;
 
+    public int levelNumber;
+
     public void Start()
     {
         AnalyticsResult levelAttempt = Analytics.CustomEvent("Level Started");
@@ -34,7 +36,37 @@ public class LevelCompleteActions : MonoBehaviour
             PivotCounter.PivotCounterBegin();
             UnityEngine.Debug.Log("5. Level Complete event log: " + levelCompleteAnalytics);
             LevelCompleteScreen.Setup();
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            scoreManager.Finish();
+            
+            if (levelNumber == 1)
+            {
+                PlayerPrefs.SetInt("level1Complete", 1);
+                if (scoreManager.score == scoreManager.totalScore)
+                    PlayerPrefs.SetInt("level1Coins", 1);
+                if (scoreManager.GetTime() <= scoreManager.goalTime)
+                    PlayerPrefs.SetInt("level1Time", 1);
+            }
 
+            else if (levelNumber == 2)
+            {
+                PlayerPrefs.SetInt("level2Complete", 1);
+                if (scoreManager.score == scoreManager.totalScore)
+                    PlayerPrefs.SetInt("level2Coins", 1);
+                if (scoreManager.GetTime() <= scoreManager.goalTime)
+                    PlayerPrefs.SetInt("level2Time", 1);
+            }
+
+            else if (levelNumber == 3)
+            {
+                PlayerPrefs.SetInt("level3Complete", 1);
+                if (scoreManager.score == scoreManager.totalScore)
+                    PlayerPrefs.SetInt("level3Coins", 1);
+                if (scoreManager.GetTime() <= scoreManager.goalTime)
+                    PlayerPrefs.SetInt("level3Time", 1);
+            }
+
+            PlayerPrefs.Save();
 
             //9. SEND NUMBER OF MISSED GRAPPLES ON EACH LEVEL, LEVEL 1 ONLY FOR NOW
             AnalyticsResult otherMissedGrappleAnalytics = Analytics.CustomEvent("9. Missed Grapples", new Dictionary<string, object>
