@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ChangeScore(0);
         if (instance == null)
             instance = this;
 
@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         score = 0;
+        ChangeScore(0);
         startTime = Time.time;
         Finished = false;
     }
