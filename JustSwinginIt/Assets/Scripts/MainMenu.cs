@@ -9,6 +9,14 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void onAdvanceButton() {
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void onTutorialButton() {
+        SceneManager.LoadScene("Level 0");
+    }
+
     public void onInstructionsButton() {
         SceneManager.LoadScene("Instructions");
     }
