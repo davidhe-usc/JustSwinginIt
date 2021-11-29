@@ -635,9 +635,9 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Analytics: 1
+    Analytics: 0
     Build: 0
-    Collab: 0
+    Collab: 1
     Game Performance: 0
     Purchasing: 0
     UDP: 0
@@ -655,11 +655,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 619078a6-74ae-462f-becc-2161badf6fd8
+  cloudProjectId: 73d2cd84-60ed-4450-afd0-7932b174bd20
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: JustSwinginIt (1)
-  organizationId: dixitshamanth
+  organizationId: sir_cannonball
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
